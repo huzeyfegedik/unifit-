@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ÜniFit Plus üyelik, antrenman, çalışma saatleri ve salon kullanımı hakkında sıkça sorulan sorular.">
+<title>S.S.S. | ÜniFit Plus</title>
+
+<style>
+:root{--yellow:#ffd400;--black:#080808;--panel:#151515;--gray:#bbb}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--black);color:#fff;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{width:min(1050px,90%);margin:auto}
+header{position:sticky;top:0;z-index:99;background:#090909;border-bottom:2px solid var(--yellow)}
+nav{min-height:82px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:23px}
+.logo img{width:55px;height:55px;object-fit:contain;border-radius:50%}
+.yellow,.logo span{color:var(--yellow)}
+.links{display:flex;gap:24px;list-style:none}
+.links a{font-size:14px;font-weight:bold}
+.links a:hover,.links .active{color:var(--yellow)}
+.menu-btn{display:none;background:none;border:1px solid #555;color:var(--yellow);font-size:25px;padding:5px 12px;border-radius:5px}
+.hero{padding:80px 0 60px;background:linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.55)),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85') center/cover;border-bottom:1px solid #333}
+.tag{color:var(--yellow);font-size:13px;font-weight:900;letter-spacing:3px}
+h1{font-size:clamp(36px,6vw,65px);line-height:1.1;margin:15px 0}
+.hero p{color:#ddd;max-width:650px}
+main{padding:50px 0 80px}
+.search{max-width:760px;margin:0 auto 25px}
+.search input{width:100%;padding:15px;background:#161616;border:1px solid #444;border-radius:7px;color:white;font-size:16px}
+.categories{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.categories button{background:#181818;border:1px solid #444;color:white;border-radius:30px;padding:10px 18px;cursor:pointer}
+.categories button:hover,.categories button.active{background:var(--yellow);color:#080808;border-color:var(--yellow);font-weight:bold}
+.group{max-width:850px;margin:0 auto 32px}
+.group h2{font-size:22px;color:var(--yellow);margin-bottom:14px}
+.faq{background:var(--panel);border:1px solid #333;border-radius:7px;margin-bottom:10px;overflow:hidden}
+.faq[hidden],.group[hidden]{display:none}
+.faq summary{list-style:none;cursor:pointer;position:relative;padding:18px 50px 18px 20px;font-weight:bold}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:25px;color:var(--yellow)}
+.faq[open] summary:after{content:"−"}
+.faq[open] summary{color:var(--yellow)}
+.answer{padding:0 20px 20px;color:var(--gray);font-size:15px}
+.answer a{color:var(--yellow);text-decoration:underline}
+.empty{display:none;text-align:center;color:var(--gray);padding:30px}
+.banner{max-width:850px;margin:50px auto 0;padding:35px 25px;text-align:center;background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.55)),url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=85') center/cover;border:1px solid #444;border-radius:9px}
+.banner h2{font-size:28px}
+.banner p{color:#ddd;margin:10px 0 22px}
+.btn{display:inline-block;padding:12px 21px;background:var(--yellow);color:#080808;font-weight:bold;border:2px solid var(--yellow);border-radius:5px}
+.btn:hover{background:transparent;color:var(--yellow)}
+.btn-outline{background:transparent;border-color:#777;color:white;margin-left:8px}
+footer{padding:30px 0;background:#050505;border-top:2px solid var(--yellow)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-row p{color:#aaa;font-size:13px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.footer-links a:hover{color:var(--yellow)}
+.whatsapp{position:fixed;right:20px;bottom:20px;z-index:99;background:#20c968;color:white;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:27px}
+@media(max-width:800px){
+.menu-btn{display:block}
+.links{display:none;position:absolute;top:82px;left:0;right:0;background:#090909;padding:22px 5%;flex-direction:column;border-bottom:2px solid var(--yellow)}
+.links.open{display:flex;align-items:flex-start}
+.hero{padding:60px 0 45px}
+}
+@media(max-width:540px){
+.logo{font-size:19px}.logo img{width:45px;height:45px}
+main{padding:35px 0 60px}
+.faq summary{padding:16px 42px 16px 15px}
+.answer{padding:0 15px 17px}
+.banner{padding:28px 17px}
+.btn-outline{margin:10px 0 0}
+.footer-row{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="container">
+<a class="logo" href="index.html#anasayfa">
+<img src="unifit-logo.jpg" alt="ÜniFit Plus logosu">
+<div>ÜNİFIT <span>PLUS</span></div>
+</a>
+<button class="menu-btn" id="menuBtn" aria-label="Menüyü aç">☰</button>
+<ul class="links" id="navLinks">
+<li><a href="index.html#anasayfa">Ana Sayfa</a></li>
+<li><a href="index.html#programlar">Programlar</a></li>
+<li><a href="index.html#hakkimizda">Hakkımızda</a></li>
+<li><a class="active" href="sss.html">S.S.S.</a></li>
+<li><a href="index.html#iletisim">İletişim</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+<div class="container">
+<div class="tag">ÜNİFIT PLUS DESTEK MERKEZİ</div>
+<h1>SIKÇA SORULAN<br><span class="yellow">SORULAR.</span></h1>
+<p>Üyelik, antrenman, salon kullanımı ve diğer konularda merak ettiğin soruların cevaplarını burada bulabilirsin.</p>
+</div>
+</section>
+
+<main class="container">
+<div class="search">
+<input type="search" id="searchInput" placeholder="🔎 Sorularda ara..." aria-label="Sorularda ara">
+</div>
+
+<div class="categories">
+<button class="active" data-filter="all">Tüm Sorular</button>
+<button data-filter="uyelik">Üyelik</button>
+<button data-filter="antrenman">Antrenman</button>
+<button data-filter="salon">Salon Kullanımı</button>
+<button data-filter="genel">Genel</button>
+</div>
+
+<div id="faqList">
+<div class="group" data-group="uyelik">
+<h2>ÜYELİK</h2>
+<details class="faq" data-category="uyelik">
+<summary>ÜniFit Plus'a nasıl üye olabilirim?</summary>
+<div class="answer">Üyelik bilgisi almak için <a href="https://wa.me/905300492078">WhatsApp üzerinden</a> bizimle iletişime geçebilirsin.</div>
+</details>
+<details class="faq" data-category="uyelik">
+<summary>Üyelik ücretleri ne kadar?</summary>
+<div class="answer">Güncel fiyatları ve üyelik paketlerini öğrenmek için bizimle iletişime geçebilirsin.</div>
+</details>
+<details class="faq" data-category="uyelik">
+<summary>Öğrencilere özel üyelik seçeneği var mı?</summary>
+<div class="answer">Öğrenci indirimi veya özel paketler hakkında güncel bilgi almak için salonla iletişime geçebilirsin.</div>
+</details>
+</div>
+
+<div class="group" data-group="antrenman">
+<h2>ANTRENMAN</h2>
+<details class="faq" data-category="antrenman">
+<summary>Spora yeni başlayanlar da gelebilir mi?</summary>
+<div class="answer">Evet. Yeni başlayanların kendi seviyelerine uygun hareketlerle ilerlemesi ve egzersizleri doğru teknikle öğrenmesi önemlidir.</div>
+</details>
+<details class="faq" data-category="antrenman">
+<summary>Kendime uygun antrenman programını nasıl seçebilirim?</summary>
+<div class="answer">Kas gelişimi, kondisyon veya genel sağlık gibi hedeflerini belirleyerek seviyene uygun bir program seçebilirsin.</div>
+</details>
+<details class="faq" data-category="antrenman">
+<summary>Haftada kaç gün antrenman yapmalıyım?</summary>
+<div class="answer">Bu, deneyimine, hedeflerine ve dinlenme ihtiyacına göre değişir. Sürdürülebilir bir programla başlamak daha doğru olur.</div>
+</details>
+</div>
+
+<div class="group" data-group="salon">
+<h2>SALON KULLANIMI</h2>
+<details class="faq" data-category="salon">
+<summary>Spor yaparken yanımda neler getirmeliyim?</summary>
+<div class="answer">Rahat spor kıyafetleri, temiz spor ayakkabısı, havlu ve su şişesi getirebilirsin.</div>
+</details>
+<details class="faq" data-category="salon">
+<summary>Salonun çalışma saatlerini nereden öğrenebilirim?</summary>
+<div class="answer">Çalışma saatleri ana sayfanın <a href="index.html#iletisim">İletişim bölümünde</a> yer alır. Güncel saatleri telefon veya Instagram üzerinden doğrulayabilirsin.</div>
+</details>
+<details class="faq" data-category="salon">
+<summary>Salonun adresini nasıl öğrenebilirim?</summary>
+<div class="answer">Adres bilgisi ana sayfanın <a href="index.html#iletisim">İletişim bölümünde</a> bulunur. Gitmeden önce konumu kontrol etmeni öneririz.</div>
+</details>
+<details class="faq" data-category="salon">
+<summary>Salonda hangi ekipmanlar bulunuyor?</summary>
+<div class="answer">Mevcut ekipmanlar hakkında bilgi almak için bizimle doğrudan iletişime geçebilirsin.</div>
+</details>
+</div>
+
+<div class="group" data-group="genel">
+<h2>GENEL</h2>
+<details class="faq" data-category="genel">
+<summary>ÜniFit Plus ile nasıl iletişim kurabilirim?</summary>
+<div class="answer"><a href="https://wa.me/905300492078">WhatsApp üzerinden</a> bize ulaşabilir veya <a href="https://www.instagram.com/unifitpluss/" target="_blank" rel="noopener">Instagram hesabımızı</a> ziyaret edebilirsin.</div>
+</details>
+<details class="faq" data-category="genel">
+<summary>Instagram hesabınız hangisi?</summary>
+<div class="answer">Instagram hesabımız <a href="https://www.instagram.com/unifitpluss/" target="_blank" rel="noopener">@unifitpluss</a>.</div>
+</details>
+<details class="faq" data-category="genel">
+<summary>Adres veya çalışma saatleri değişirse ne yapmalıyım?</summary>
+<div class="answer">En güncel bilgi için doğrudan salonla iletişim kurabilir veya Instagram hesabını kontrol edebilirsin.</div>
+</details>
+</div>
+</div>
+
+<div class="empty" id="emptyMessage">Aramana uygun bir soru bulunamadı.</div>
+
+<div class="banner">
+<div class="tag">NO PAIN NO GAIN</div>
+<h2>Cevabını bulamadın mı?</h2>
+<p>Sorunu bize WhatsApp üzerinden ilet, sana yardımcı olalım.</p>
+<a class="btn" href="https://wa.me/905300492078" target="_blank" rel="noopener">WhatsApp İletişim →</a>
+<a class="btn btn-outline" href="index.html#iletisim">İletişim Sayfası</a>
+</div>
+</main>
+
+<footer>
+<div class="container footer-row">
+<p>© <span id="year"></span> ÜniFit Plus · NO PAIN NO GAIN</p>
+<div class="footer-links">
+<a href="index.html#anasayfa">Ana Sayfa</a>
+<a href="index.html#programlar">Programlar</a>
+<a href="sss.html">S.S.S.</a>
+<a href="index.html#iletisim">İletişim</a>
+</div>
+</div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/905300492078" target="_blank" rel="noopener" aria-label="WhatsApp ile iletişim">☏</a>
+
+<script>
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+menuBtn.addEventListener("click",()=>{
+  navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded",navLinks.classList.contains("open"));
+});
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));
+document.getElementById("year").textContent=new Date().getFullYear();
+
+const searchInput=document.getElementById("searchInput");
+const filterButtons=document.querySelectorAll("[data-filter]");
+const faqItems=document.querySelectorAll(".faq");
+const groups=document.querySelectorAll(".group");
+const emptyMessage=document.getElementById("emptyMessage");
+let activeFilter="all";
+
+function filterQuestions(){
+  const query=searchInput.value.trim().toLocaleLowerCase("tr-TR");
+  let visibleCount=0;
+
+  faqItems.forEach(item=>{
+    const categoryMatch=activeFilter==="all"||item.dataset.category===activeFilter;
+    const textMatch=item.textContent.toLocaleLowerCase("tr-TR").includes(query);
+    const visible=categoryMatch&&textMatch;
+    item.hidden=!visible;
+    if(!visible)item.open=false;
+    if(visible)visibleCount++;
+  });
+
+  groups.forEach(group=>{
+    group.hidden=!Array.from(group.querySelectorAll(".faq")).some(item=>!item.hidden);
+  });
+
+  emptyMessage.style.display=visibleCount===0?"block":"none";
+}
+
+filterButtons.forEach(button=>{
+  button.addEventListener("click",()=>{
+    activeFilter=button.dataset.filter;
+    filterButtons.forEach(b=>b.classList.toggle("active",b===button));
+    filterQuestions();
+  });
+});
+
+searchInput.addEventListener("input",filterQuestions);
+</script>
+</body>
+</html>
