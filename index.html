@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ÜniFit Plus spor salonu. Hedefini belirle, harekete geç. No Pain No Gain.">
+<title>ÜniFit Plus | No Pain No Gain</title>
+
+<style>
+:root{--yellow:#ffd400;--black:#080808;--panel:#151515;--gray:#bdbdbd}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--black);color:white;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{width:min(1150px,90%);margin:auto}
+header{position:sticky;top:0;z-index:99;background:#090909;border-bottom:2px solid var(--yellow)}
+nav{min-height:82px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:23px}
+.logo img{width:55px;height:55px;object-fit:contain;border-radius:50%}
+.logo span,.yellow{color:var(--yellow)}
+.links{display:flex;gap:25px;list-style:none;align-items:center}
+.links a{font-size:14px;font-weight:bold}
+.links a:hover,.links .active{color:var(--yellow)}
+.menu-btn{display:none;background:none;border:1px solid #555;color:var(--yellow);font-size:25px;padding:5px 12px;border-radius:5px}
+.hero{min-height:600px;display:flex;align-items:center;background:linear-gradient(90deg,#050505 0%,rgba(0,0,0,.88) 38%,rgba(0,0,0,.25) 100%),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;border-bottom:1px solid #333}
+.hero-content{padding:90px 0;max-width:700px}
+.tag{color:var(--yellow);font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(45px,7vw,88px);line-height:1.02;margin:20px 0}
+h1 span{color:var(--yellow);font-style:italic}
+.hero p{font-size:18px;color:#ddd;max-width:570px;margin-bottom:30px}
+.btn{display:inline-block;background:var(--yellow);color:#080808;font-weight:900;padding:13px 22px;border:2px solid var(--yellow);border-radius:5px;transition:.2s}
+.btn:hover{background:transparent;color:var(--yellow)}
+.btn-outline{background:transparent;color:white;border-color:#777;margin-left:8px}
+section{padding:80px 0}
+.section-head{margin-bottom:35px}
+h2{font-size:clamp(30px,4vw,45px);line-height:1.15;margin:10px 0 15px}
+.section-head p,.muted{color:var(--gray);max-width:700px}
+.programs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.program{background:var(--panel);border:1px solid #333;border-radius:9px;overflow:hidden;transition:.25s}
+.program:hover{transform:translateY(-5px);border-color:var(--yellow)}
+.program img{width:100%;height:220px;object-fit:cover;display:block}
+.program-text{padding:22px}
+.program h3{color:var(--yellow);font-size:22px;margin-bottom:8px}
+.program p{color:var(--gray);font-size:15px}
+.about{background:#111}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}
+.about-image{width:100%;height:420px;object-fit:cover;border-radius:10px;border:1px solid #444}
+.about-copy p{color:var(--gray);margin:15px 0}
+.features{list-style:none;margin:22px 0}
+.features li{margin:10px 0}
+.features li:before{content:"✓";color:var(--yellow);font-weight:bold;margin-right:12px}
+.contact{background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.78)),url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1800&q=85') center/cover}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.info-card,.form-card{padding:30px;background:rgba(17,17,17,.94);border:1px solid #444;border-radius:10px}
+.info-card h3,.form-card h3{font-size:24px;margin-bottom:20px}
+.info-item{padding:15px 0;border-bottom:1px solid #333;color:#ddd;overflow-wrap:anywhere}
+.info-item:last-child{border-bottom:0}
+.info-item strong{display:block;color:var(--yellow);margin-bottom:5px}
+.info-item a:hover{color:var(--yellow)}
+form label{display:block;margin:12px 0 6px}
+input,select,textarea{width:100%;padding:12px;background:#0b0b0b;border:1px solid #444;border-radius:5px;color:white;font:inherit}
+textarea{min-height:100px;resize:vertical}
+form button{width:100%;margin-top:17px;cursor:pointer}
+.faq-callout{background:#151515;text-align:center;border-top:1px solid #333;border-bottom:1px solid #333}
+.faq-callout p{color:var(--gray);margin:12px 0 22px}
+footer{padding:30px 0;background:#050505;border-top:2px solid var(--yellow)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-row p{font-size:13px;color:#aaa}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.footer-links a:hover{color:var(--yellow)}
+.whatsapp{position:fixed;right:20px;bottom:20px;z-index:100;background:#20c968;color:white;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:27px;box-shadow:0 3px 15px #0009}
+@media(max-width:800px){
+.menu-btn{display:block}
+.links{display:none;position:absolute;top:82px;left:0;right:0;background:#090909;padding:22px 5%;flex-direction:column;align-items:flex-start;border-bottom:2px solid var(--yellow)}
+.links.open{display:flex}
+.programs{grid-template-columns:1fr 1fr}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.hero{min-height:520px}
+.about-image{height:320px}
+}
+@media(max-width:540px){
+.programs{grid-template-columns:1fr}
+section{padding:60px 0}
+.logo{font-size:19px}.logo img{width:45px;height:45px}
+.hero p{font-size:16px}
+.btn-outline{margin:12px 0 0}
+.info-card,.form-card{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="container">
+<a class="logo" href="#anasayfa">
+<img src="images.jpg" alt="ÜniFit Plus logosu">
+<div>ÜNİFİT <span>PLUS</span></div>
+</a>
+<button class="menu-btn" id="menuBtn" aria-label="Menüyü aç">☰</button>
+<ul class="links" id="navLinks">
+<li><a href="#anasayfa">Ana Sayfa</a></li>
+<li><a href="#programlar">Programlar</a></li>
+<li><a href="#hakkimizda">Hakkımızda</a></li>
+<li><a href="sss.html">S.S.S.</a></li>
+<li><a href="#iletisim">İletişim</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="anasayfa">
+<div class="container hero-content">
+<div class="tag">ÜniFit Plus • Fitness & Yaşam</div>
+<h1>NO PAIN<br><span>NO GAIN.</span></h1>
+<p>Daha güçlü bir sen için doğru yerdesin. Hedeflerini belirle, sınırlarını zorla ve gelişiminin keyfini çıkar.</p>
+<a class="btn" href="#programlar">Programları Keşfet →</a>
+<a class="btn btn-outline" href="#iletisim">Bize Ulaş</a>
+</div>
+</section>
+
+<section id="programlar">
+<div class="container">
+<div class="section-head">
+<div class="tag">Antrenman seçenekleri</div>
+<h2>SANA UYGUN <span class="yellow">PROGRAMI</span> BUL</h2>
+<p>Hedefin ne olursa olsun, istikrarlı bir başlangıç ve sana uygun antrenmanlarla ilerle.</p>
+</div>
+<div class="programs">
+<article class="program">
+<img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85" alt="Ağırlık antrenmanı yapan sporcu" loading="lazy">
+<div class="program-text"><h3>Ağırlık Antrenmanı</h3><p>Güç kazanımına ve kas gelişimine yönelik egzersizlerle hedeflerine odaklan.</p></div>
+</article>
+<article class="program">
+<img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=900&q=85" alt="Kondisyon antrenmanı" loading="lazy">
+<div class="program-text"><h3>Kondisyon</h3><p>Dayanıklılığını geliştir, enerjini yükselt ve daha aktif bir yaşam sür.</p></div>
+</article>
+<article class="program">
+<img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=85" alt="Spor salonunda antrenman yapan kişi" loading="lazy">
+<div class="program-text"><h3>Kişisel Hedefler</h3><p>Kendi seviyene, zamanına ve hedeflerine uygun bir antrenman rutini oluştur.</p></div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="about" id="hakkimizda">
+<div class="container about-grid">
+<img class="about-image" src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=1100&q=85" alt="Spor salonunda antrenman ortamı" loading="lazy">
+<div class="about-copy">
+<div class="tag">Hakkımızda</div>
+<h2>GÜCÜNÜ <span class="yellow">KEŞFET.</span></h2>
+
+<p>İster spora yeni başlıyor ol ister rutinini geliştirmek istiyor ol, unutma: gelişim bir günde değil, her gün attığın adımlarla gelir.</p>
+<ul class="features">
+<li>Farklı hedeflere uygun antrenman seçenekleri</li>
+<li>Yeni başlayanlar için bilgilendirme</li>
+<li>Üyelik ve iletişim bilgilerine kolay erişim</li>
+</ul>
+<a class="btn" href="sss.html">Sorularını Gör →</a>
+</div>
+</div>
+</section>
+
+<section class="contact" id="iletisim">
+<div class="container">
+<div class="section-head">
+<div class="tag">İletişim</div>
+<h2>HEDEFINE BİRLİKTE <span class="yellow">ULAŞALIM.</span></h2>
+<p>Üyelik, programlar ve salon hakkında bilgi almak için bizimle iletişime geç.</p>
+</div>
+<div class="contact-grid">
+<div class="info-card">
+<h3>Salon Bilgileri</h3>
+<div class="info-item"><strong>☎ Telefon / WhatsApp</strong><a href="https://wa.me/905300492078" target="_blank" rel="noopener">0530 049 20 78</a></div>
+<div class="info-item"><strong>◎ Instagram</strong><a href="https://www.instagram.com/unifitpluss/" target="_blank" rel="noopener">@unifitpluss</a></div>
+<div class="info-item"><strong>⌖ Adres</strong><span>Şehit Murat Demir Mh. Konuralp 319. sokak No:1 Cf Algün Westside İçi Düzce/Türkiye</span><br></div>
+<div class="info-item"><strong>◷ Çalışma Saatleri</strong><span>Diğer Günler: 10.00-22.00</span><br><span>Pazar: 10.00–18.00</span><br></div>
+</div>
+
+<div class="form-card">
+<h3>Bize Mesaj Gönder</h3>
+<form id="contactForm">
+<label for="name">Ad Soyad</label>
+<input id="name" required placeholder="Adını ve soyadını yaz">
+<label for="phone">Telefon</label>
+<input id="phone" type="tel" required placeholder="Telefon numaran">
+<label for="topic">İlgilendiğin konu</label>
+<select id="topic" required>
+<option value="">Bir konu seç</option>
+<option>Üyelik bilgisi</option>
+<option>Antrenman programları</option>
+<option>Çalışma saatleri</option>
+<option>Adres bilgisi</option>
+<option>Diğer</option>
+</select>
+<label for="message">Mesajın</label>
+<textarea id="message" placeholder="Mesajını buraya yaz"></textarea>
+<button class="btn" type="submit">WhatsApp ile Gönder →</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<section class="faq-callout">
+<div class="container">
+<div class="tag">Merak ettiklerin</div>
+<h2>SORULARIN MI VAR?</h2>
+<p>Üyelik, antrenman, salon kullanımı ve diğer konularla ilgili cevaplara göz at.</p>
+<a class="btn" href="sss.html">S.S.S. Sayfasına Git →</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer-row">
+<p>© <span id="year"></span> ÜniFit Plus · NO PAIN NO GAIN</p>
+<div class="footer-links">
+<a href="#anasayfa">Ana Sayfa</a>
+<a href="#programlar">Programlar</a>
+<a href="sss.html">S.S.S.</a>
+<a href="#iletisim">İletişim</a>
+<a href="https://www.instagram.com/unifitpluss/" target="_blank" rel="noopener">Instagram</a>
+</div>
+</div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/905300492078" target="_blank" rel="noopener" aria-label="WhatsApp ile iletişim">☏</a>
+
+<script>
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+menuBtn.addEventListener("click",()=>{
+  navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded",navLinks.classList.contains("open"));
+});
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));
+document.getElementById("year").textContent=new Date().getFullYear();
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const name=document.getElementById("name").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const topic=document.getElementById("topic").value;
+  const message=document.getElementById("message").value.trim();
+  const text=`Merhaba ÜniFit Plus!\nAd Soyad: ${name}\nTelefon: ${phone}\nKonu: ${topic}\nMesaj: ${message||"Belirtilmedi"}`;
+  window.open("https://wa.me/905300492078?text="+encodeURIComponent(text),"_blank");
+});
+</script>
+</body>
+</html>
