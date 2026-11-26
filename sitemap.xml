@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://huzeyfegedik.github.io/unifit-/</loc>
+    <loc>https://huzeyfegedik.github.io/duzce-unifit-plus/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://huzeyfegedik.github.io/unifit-/sss.html</loc>
+    <loc>https://huzeyfegedik.github.io/duzce-unifit-plus/sss.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
